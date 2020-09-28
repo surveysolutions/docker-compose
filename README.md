@@ -16,7 +16,7 @@ This can be any domain You own. If you don't have one - there is plenty free dom
 
 # How to use
 
-1. Fork this repository and clone [Fork this on github](https://github.com/surveysolutions/docker-compose/fork)
+1. Clone or [fork this repository](https://github.com/surveysolutions/docker-compose/fork)
 2. Adjust `.env` file with Your own domain name. Default value will only work with non-ssl version.
 
 ## Without SSL

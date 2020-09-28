@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 services:
   hq:
     image: 'surveysolutions/surveysolutions'   
@@ -21,5 +21,5 @@ services:
     environment:
       POSTGRES_PASSWORD: pg_password
     volumes:
-      - ./database:/var/lib/postgresql/data
+      - ./data/database:/var/lib/postgresql/data
     restart: always

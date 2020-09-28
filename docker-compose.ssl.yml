@@ -20,7 +20,7 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
       - "--certificatesresolvers.le.acme.tlschallenge=true"
-      - "--certificatesresolvers.le.acme.email=example@example.com"
+      - "--certificatesresolvers.le.acme.email=${LETS_ENCRYPT_EMAIL}"
       - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
     volumes:
     - "letsencrypt:/letsencrypt"

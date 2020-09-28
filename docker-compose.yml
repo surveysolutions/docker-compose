@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  hq:
+    image: 'surveysolutions/surveysolutions'   
+    depends_on:
+     - "db"
+    environment: 
+      ASPNETCORE_ENVIRONMENT: Production
+      HQ_ConnectionStrings__DefaultConnection: 'Persist Security Info=true;Server=db;Port=5432;User Id=postgres;Password=pg_password;Database=SurveySolutions'
+      HQ_Headquarters__BaseUrl: http://${HQ_HOST}
+      HQ_Headquarters__TenantName: default
+    command: []
+    volumes:
+      - ./data/app:/app/AppData
+      - ./data/app.key:/root/.aspnet/DataProtection-Keys
+      - ./data/logs:/logs
+    restart: always
+
+  db:
+    image: "postgres"
+    environment:
+      POSTGRES_PASSWORD: pg_password
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    restart: always

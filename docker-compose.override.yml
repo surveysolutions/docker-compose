@@ -1,0 +1,5 @@
+version: '3.8'
+services:
+  hq:
+     ports:
+     - "80:80"

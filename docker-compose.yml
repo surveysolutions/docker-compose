@@ -9,11 +9,12 @@ services:
       HQ_ConnectionStrings__DefaultConnection: 'Persist Security Info=true;Server=db;Port=5432;User Id=postgres;Password=pg_password;Database=SurveySolutions'
       HQ_Headquarters__BaseUrl: http://${HQ_HOST}
       HQ_Headquarters__TenantName: default
+      Export_ExportSettings__DirectoryPath: /app/AppData/Export
+      HQ_Logging__LogsLocation: /app/AppData/logs
     command: []
     volumes:
       - ./data/app:/app/AppData
       - ./data/app.key:/root/.aspnet/DataProtection-Keys
-      - ./data/logs:/logs
     restart: always
 
   db:

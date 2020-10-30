@@ -32,3 +32,7 @@ Use `run.sh` file to spin up HQ without SSL. In this mode default value for  `HQ
 Use `run.ssl.sh` filr to spin up HQ with Automatic SSL support. 
 
 Automatic SSL is handled by `Traefik` proxy server via Let's Encrypt
+
+## Postgres
+
+While running Postgres instance in docker is viable solution, we strongly recommend to run Postgres in separate server or use "managed" solutions provided by cloud providers(i.e. Amazon RDS, Azure Database for PostgreSQL, Google Cloud SQL, etc...)

@@ -1,4 +1,4 @@
-# Intoduction
+# Survey Solutions in Docker
 
 This repository contains sample configuration for `docker-compose` to be able to run Survey Solutions Headquarters with docker.
 

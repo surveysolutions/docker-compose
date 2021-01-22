@@ -7,7 +7,6 @@ services:
     environment: 
       HQ_ConnectionStrings__DefaultConnection: Server=db;Port=5432;User Id=postgres;Password=pg_password;Database=hq1
       HQ_Headquarters__BaseUrl: http://${HQ1_HOST}
-    command: []
     volumes:
       - ./data/app1:/app/AppData
     restart: always
@@ -24,7 +23,6 @@ services:
     environment: 
       HQ_ConnectionStrings__DefaultConnection: Server=db;Port=5432;User Id=postgres;Password=pg_password;Database=hq2
       HQ_Headquarters__BaseUrl: http://${HQ2_HOST}
-    command: []
     volumes:
       - ./data/app2:/app/AppData
     restart: always

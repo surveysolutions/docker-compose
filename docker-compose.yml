@@ -1,21 +1,55 @@
 version: '3'
 services:
-  hq:
-    image: 'surveysolutions/surveysolutions'
+  hq1:
+    image: surveysolutions/surveysolutions
     depends_on:
      - "db"
     environment: 
-      HQ_ConnectionStrings__DefaultConnection: 'Server=db;Port=5432;User Id=postgres;Password=pg_password;Database=SurveySolutions'
-      HQ_Headquarters__BaseUrl: http://${HQ_HOST}
+      HQ_ConnectionStrings__DefaultConnection: Server=db;Port=5432;User Id=postgres;Password=pg_password;Database=hq1
+      HQ_Headquarters__BaseUrl: http://${HQ1_HOST}
     command: []
     volumes:
-      - ./data/app:/app/AppData
+      - ./data/app1:/app/AppData
     restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.hq1.rule=Host(`${HQ1_HOST}`)"
+    healthcheck:
+      disable: true
+      
+  hq2:
+    image: surveysolutions/surveysolutions
+    depends_on:
+     - "db"
+    environment: 
+      HQ_ConnectionStrings__DefaultConnection: Server=db;Port=5432;User Id=postgres;Password=pg_password;Database=hq2
+      HQ_Headquarters__BaseUrl: http://${HQ2_HOST}
+    command: []
+    volumes:
+      - ./data/app2:/app/AppData
+    restart: always
+    healthcheck:
+      disable: true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.hq2.rule=Host(`${HQ2_HOST}`)"
 
   db:
-    image: "postgres"
+    image: postgres
     environment:
       POSTGRES_PASSWORD: pg_password
     volumes:
       - ./data/database:/var/lib/postgresql/data
     restart: always
+
+  traefik:
+    image: traefik:v2.4
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    volumes:
+    - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    restart: always
+    ports:
+      - "80:80"

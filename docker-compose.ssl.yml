@@ -1,22 +1,17 @@
 version: '3'
 services:
-  hq:
-    environment: 
-      HQ_Headquarters__BaseUrl: https://${HQ_HOST}
+  hq1:
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.hq.rule=Host(`${HQ_HOST}`)"
-      - "traefik.http.routers.hq.entrypoints=websecure"
-      - "traefik.http.routers.hq.tls.certresolver=le"
-      - "traefik.http.services.hq.loadbalancer.passhostheader=true"
+      - "traefik.http.routers.hq1.entrypoints=websecure"
+      - "traefik.http.routers.hq1.tls.certresolver=le"
+
+  hq2:
+    labels:
+      - "traefik.http.routers.hq2.entrypoints=websecure"
+      - "traefik.http.routers.hq2.tls.certresolver=le"
 
   traefik:
-    image: "traefik:v2.3"
     command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
       - "--certificatesresolvers.le.acme.tlschallenge=true"
@@ -24,10 +19,10 @@ services:
       - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
     volumes:
     - "letsencrypt:/letsencrypt"
-    - "/var/run/docker.sock:/var/run/docker.sock:ro"
     restart: always
     ports:
       - "443:443"
       - "80:80"
+
 volumes:  
   letsencrypt:

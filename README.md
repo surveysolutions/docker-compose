@@ -2,7 +2,7 @@
 
 This repository contains sample configuration for `docker-compose` to be able to run Survey Solutions Headquarters with docker.
 
-Docker images is hosted by Docker Hub: https://hub.docker.com/r/surveysolutions/surveysolutions
+Docker images is hosted by Docker Hub: <https://hub.docker.com/r/surveysolutions/surveysolutions>
 
 ## Note
 
@@ -23,7 +23,7 @@ This can be any domain You own. If you don't have one - there is plenty free dom
 ## How to use
 
 1. Clone or [fork this repository](https://github.com/surveysolutions/docker-compose/fork)
-2. Adjust `.env` file with Your own domain name. Default value will only work with non-ssl version.
+2. Adjust `.env` file with Your own domain name. Default value will only work with non-ssl version of configuration.
 
 ### Without SSL
 
@@ -31,9 +31,25 @@ Use `run.sh` file to spin up HQ without SSL. In this mode default value for  `HQ
 
 ### With SSL
 
-Use `run.ssl.sh` filr to spin up HQ with Automatic SSL support. 
+Use `run.ssl.sh` file to spin up HQ with Automatic SSL support.
 
 Automatic SSL is handled by `Traefik` proxy server via Let's Encrypt
+
+## With database backups
+
+There is a project that can help You to automatically periodically backup HQ database: <https://github.com/prodrigestivill/docker-postgres-backup-local>
+
+Configuration in docker-compose can be found here at [docker-compose.backup.yml](/docker-compose.backup.yml)
+
+To run with backups You can use following commands:
+
+```bash
+ # Without SSL
+ docker-compose -f docker-compose.yml -f docker-compose.backup.yml up -d
+
+ # With SSL
+ docker-compose -f docker-compose.yml -f docker-compose.ssl.yml -f docker-compose.backup.yml up -d
+```
 
 ## Postgres
 

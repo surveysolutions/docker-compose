@@ -6,7 +6,7 @@ Docker images is hosted by Docker Hub: https://hub.docker.com/r/surveysolutions/
 
 ## Note
 
-While those compose files can be used to run in production environemnt. We strongly recommend to run Postgres database on separate server or using managed solutions from Cloud providers.
+While those compose files can be used to run in production environment. We strongly recommend to run Postgres database on separate server or using managed solutions from Cloud providers.
 
 ### Prerequisite
 

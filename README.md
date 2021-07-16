@@ -2,7 +2,7 @@
 
 This repository contains sample configuration for `docker-compose` to be able to run Survey Solutions Headquarters with docker.
 
-Docker images is hosted by Docker Hub: <https://hub.docker.com/r/surveysolutions/surveysolutions>
+Docker images are hosted by Docker Hub: <https://hub.docker.com/r/surveysolutions/surveysolutions>
 
 ## Note
 

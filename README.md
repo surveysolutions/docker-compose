@@ -54,3 +54,8 @@ To run with backups You can use following commands:
 ## Postgres
 
 While running Postgres instance in docker is viable solution, we strongly recommend to run Postgres in separate server or use "managed" solutions provided by cloud providers(i.e. Amazon RDS, Azure Database for PostgreSQL, Google Cloud SQL, etc...)
+
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)

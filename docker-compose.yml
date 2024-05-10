@@ -4,7 +4,8 @@ services:
     image: 'surveysolutions/surveysolutions'
     depends_on:
      - "db"
-    environment: 
+    environment:
+      ASPNETCORE_URLS: http://+:80 
       HQ_ConnectionStrings__DefaultConnection: 'Server=db;Port=5432;User Id=postgres;Password=pg_password;Database=SurveySolutions'
       HQ_Headquarters__BaseUrl: http://${HQ_HOST}
     volumes:
